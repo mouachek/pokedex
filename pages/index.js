@@ -25,18 +25,27 @@ const Home = () => {
             })
         }
         createPokemonObject(data.results)
-        console.log(data);
     }
 
     useEffect(() => {
         getAllPokemons()
     }, [])
 
+    const sortByDescendingName = () => {
+        let i = allPokemons.sort((a, b) => a.species.name < b.species.name ? -1 : 1);
+        i.reverse();
+        getAllPokemons();
+    };
+
+
     return (
         <div className={styles.container}>
             <h1>
                 Welcome to Pokedex
             </h1>
+            <div className="pb-5">
+                <Button variant="warning" size="lg" onClick={() => sortByDescendingName()}>Sort by Descending name</Button>
+            </div>
             <div className={styles.cardContainer}>
                 <div className={styles.allPokemons}>
                     {allPokemons.map((pokemon, index) =>
