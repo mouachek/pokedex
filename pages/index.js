@@ -34,7 +34,12 @@ const Home = () => {
     const sortByDescendingName = () => {
         let i = allPokemons.sort((a, b) => a.species.name < b.species.name ? -1 : 1);
         i.reverse();
-        getAllPokemons();
+        return getAllPokemons();
+    };
+
+    const sortByAscendingName = () => {
+        let i = allPokemons.sort((a, b) => a.species.name < b.species.name ? -1 : 1);
+        return getAllPokemons();
     };
 
 
@@ -44,6 +49,7 @@ const Home = () => {
                 Welcome to Pokedex
             </h1>
             <div className="pb-5">
+                <Button className="m-3" variant="warning" size="lg" onClick={() => sortByAscendingName()}>Sort by Ascending name</Button>
                 <Button variant="warning" size="lg" onClick={() => sortByDescendingName()}>Sort by Descending name</Button>
             </div>
             <div className={styles.cardContainer}>
